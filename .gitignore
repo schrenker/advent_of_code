@@ -1,2 +1,4 @@
-/.direnv/
+.direnv/
 .envrc
+challenge/*/__pycache__
+.venv/
