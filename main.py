@@ -1,25 +1,87 @@
 from importlib import import_module
 import argparse
+import requests
+import os
 
-def fetch_input(challenge):
+
+def fetch_input(year, day):
+    dir = f"./input/y{year}"
+    path = f"{dir}/{day}"
+
+    if os.path.isfile(path):
+        with open(path, "r") as input_file:
+            return input_file.read()
+
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+
+    # AoC website expects day in format 1-25
+    day = day[1] if len(day) == 2 and day[0] == "0" else day
+    resp = requests.get(
+        f"https://adventofcode.com/{year}/day/{day}/input",
+        cookies={"session": os.getenv("AOC_TOKEN")},
+    )
+
+    with open(path, "w") as input_file:
+        input_file.write(resp.text)
+
+    return resp.text
+
+
+def generate_challenge(year, day):
     pass
+
+
+def test_challenge(year, day, part):
+    pass
+
+
+def run_challenge(year, day, part):
+    # make sure day is in format 01-25 for consistency and sorting
+    day = f"0{day}" if len(day) == 1 else day
+    input = fetch_input(year, day)
+    challenge = import_module(f"challenge.y{year}.d{day}")
+    return challenge.part_one(input)
+
+
+def bench_challenge(year, day, part):
+    pass
+
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("action", help="What action should be performed? [run, test, bench]")
-    parser.add_argument("year", help="Which year is the challenge from? [2015 - 2024]")
-    parser.add_argument("day", help="Which day is the challenge from? [01 - 25]")
-    parser.add_argument("part", help="Which part should be run? [1, 01, 2, 02]")
+    parser.add_argument(
+        "action",
+        help="What action should be performed? [gen, run, test, bench]",
+        nargs="*",
+    )
     args = parser.parse_args()
 
-    match args.action:
+    arg_map = {
+        "run": [3, "year, day, part"],
+        "test": [3, "year, day, part"],
+        "bench": [3, "year, day, part"],
+        "gen": [2, "year, day"],
+    }
+
+    if args.action[0] not in arg_map:
+        parser.error(f"No action defined for {args.action[0]}")
+
+    if len(args.action) != arg_map[args.action[0]][0] + 1:
+        parser.error(
+            f"Wrong argument count for action '{args.action[0]}', expected {arg_map[args.action[0]][0]} [{arg_map[args.action[0]][1]}], got {len(args.action) - 1}"
+        )
+
+    match args.action[0]:
         case "run":
-            d = import_module(f"challenge.y{args.year}.d{args.day}")
-            d.part_one("runrun")
+            run_challenge(args.action[1], args.action[2], args.action[3])
         case "test":
-            print("thest")
+            test_challenge(args.action[1], args.action[2], args.action[3])
         case "bench":
-            print("benchpress")
+            bench_challenge(args.action[1], args.action[2], args.action[3])
+        case "gen":
+            generate_challenge(args.action[1], args.action[2])
+
 
 if __name__ == "__main__":
     main()
