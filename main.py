@@ -2,6 +2,7 @@ from importlib import import_module
 import argparse
 import requests
 import unittest
+import timeit
 import os
 
 
@@ -59,7 +60,14 @@ def run_challenge(year, day, part):
 
 
 def bench_challenge(year, day, part):
-    pass
+    number_of_tests = 100
+    result = timeit.timeit(
+        f'run_challenge("{year}", "{day}", "{part}")',
+        "from __main__ import run_challenge",
+        number=number_of_tests,
+    )
+    average_result = result / number_of_tests
+    print(f"Average time: {average_result:.5f} seconds")
 
 
 def main():
