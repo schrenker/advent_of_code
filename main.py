@@ -1,4 +1,5 @@
 from importlib import import_module
+from string import Template
 import argparse
 import requests
 import unittest
@@ -31,7 +32,36 @@ def fetch_input(year, day):
 
 
 def generate_challenge(year, day):
-    pass
+    day = f"0{day}" if len(day) == 1 else day
+    paths = [
+        f"challenge/y{year}",
+        f"tests/y{year}",
+        f"tests/testdata/y{year}/{day}/01",
+        f"tests/testdata/y{year}/{day}/02",
+    ]
+
+    for p in paths:
+        if not os.path.exists(p):
+            os.makedirs(p)
+
+    with open(f"challenge/y{year}/__init__.py", "w"):
+        pass
+    with open(f"tests/y{year}/__init__.py", "w"):
+        pass
+
+    with open("template/test") as f:
+        tmp = Template(f.read())
+
+    with open(f"tests/y{year}/d{day}_test.py", "w") as f:
+        f.write(tmp.substitute(year=year, day=day))
+
+    with open("template/challenge") as f:
+        tmp = f.read()
+
+    with open(f"challenge/y{year}/d{day}.py", "w") as f:
+        f.write(tmp)
+
+    return 0
 
 
 def test_challenge(year, day, part):
@@ -44,6 +74,7 @@ def test_challenge(year, day, part):
         test_selector = f"tests.y{year}.d{day}_test"
     suite = unittest.TestLoader().loadTestsFromName(test_selector)
     unittest.TextTestRunner(verbosity=2).run(suite)
+    return 0
 
 
 def run_challenge(year, day, part):
@@ -67,7 +98,7 @@ def bench_challenge(year, day, part):
         number=number_of_tests,
     )
     average_result = result / number_of_tests
-    print(f"Average time: {average_result:.5f} seconds")
+    return f"Average time: {average_result:.5f} seconds"
 
 
 def main():
@@ -96,14 +127,14 @@ def main():
 
     match args.action[0]:
         case "run":
-            run_challenge(args.action[1], args.action[2], args.action[3])
+            return run_challenge(args.action[1], args.action[2], args.action[3])
         case "test":
-            test_challenge(args.action[1], args.action[2], args.action[3])
+            return test_challenge(args.action[1], args.action[2], args.action[3])
         case "bench":
-            bench_challenge(args.action[1], args.action[2], args.action[3])
+            return bench_challenge(args.action[1], args.action[2], args.action[3])
         case "gen":
-            generate_challenge(args.action[1], args.action[2])
+            return generate_challenge(args.action[1], args.action[2])
 
 
 if __name__ == "__main__":
-    main()
+    print(main())

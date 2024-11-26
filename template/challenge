@@ -1,0 +1,5 @@
+def part_one(input):
+    return input
+
+def part_two(input):
+    return input
