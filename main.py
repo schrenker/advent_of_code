@@ -21,7 +21,7 @@ def fetch_input(year, day):
     day = day[1] if len(day) == 2 and day[0] == "0" else day
     resp = requests.get(
         f"https://adventofcode.com/{year}/day/{day}/input",
-        cookies={"session": os.getenv("AOC_TOKEN")},
+        cookies={"session": os.environ["AOC_TOKEN"]},
     )
 
     with open(path, "w") as input_file:
