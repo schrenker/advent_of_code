@@ -41,7 +41,12 @@ def run_challenge(year, day, part):
     day = f"0{day}" if len(day) == 1 else day
     input = fetch_input(year, day)
     challenge = import_module(f"challenge.y{year}.d{day}")
-    return challenge.part_one(input)
+    if part in ["01", "1"]:
+        return challenge.part_one(input)
+    elif part in ["02", "2"]:
+        return challenge.part_two(input)
+    else:
+        raise ValueError(f"part must be one of: [01 1 02 2], got: {part}")
 
 
 def bench_challenge(year, day, part):
