@@ -1,7 +1,5 @@
 def part_one(input):
-    print(input)
-    return 0
+    return len(input.rstrip())
 
 def part_two(input):
-    print(input)
-    return 0
+    return len(input.rstrip())

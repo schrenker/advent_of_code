@@ -1,5 +1,6 @@
 .direnv/
 .envrc
 challenge/*/__pycache__
+tests/*/__pycache__
 .venv/
 /input/

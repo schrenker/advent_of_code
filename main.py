@@ -1,6 +1,7 @@
 from importlib import import_module
 import argparse
 import requests
+import unittest
 import os
 
 
@@ -33,7 +34,15 @@ def generate_challenge(year, day):
 
 
 def test_challenge(year, day, part):
-    pass
+    day = f"0{day}" if len(day) == 1 else day
+    if part in ["01", "1"]:
+        test_selector = f"tests.y{year}.d{day}_test.TestChallenge.test_part_one"
+    elif part in ["02", "2"]:
+        test_selector = f"tests.y{year}.d{day}_test.TestChallenge.test_part_two"
+    else:
+        test_selector = f"tests.y{year}.d{day}_test"
+    suite = unittest.TestLoader().loadTestsFromName(test_selector)
+    unittest.TextTestRunner(verbosity=2).run(suite)
 
 
 def run_challenge(year, day, part):
