@@ -9,7 +9,7 @@
             python -m venv .venv
             source .venv/bin/activate
 
-            pip -q install pyright black
+            pip -q install pyright black requests
           '';
         };
       };
