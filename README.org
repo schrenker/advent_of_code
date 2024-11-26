@@ -1,0 +1,5 @@
+* advent_of_code
+- gen [YEAR, DAY] :: ~generate_challenge()~, creates necessary directories for running and testing challenges, applies templates from template directory
+- run [YEAR, DAY, PART] :: ~run_challenge()~, fetches and executes given part of a challenge
+- test [YEAR, DAY, PART] :: ~test_challenge()~, runs unit tests for given challenge. Can run single or both parts.
+- bench [YEAR, DAY, PART] :: ~bench_challenge()~, measures average time over several runs in seconds for given challenge
