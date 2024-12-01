@@ -1,3 +1,12 @@
+test_results = {
+    "part_one": {
+        "1": 0
+    },
+    "part_two": {
+        "1": 0
+    }
+}
+
 def part_one(input):
     return input
 
