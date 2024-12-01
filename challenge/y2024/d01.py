@@ -2,7 +2,7 @@ test_results = {"part_one": {"1": 11}, "part_two": {"1": 31}}
 
 
 def part_one(input):
-    tmp = input.rstrip().split("\n")
+    tmp = input.splitlines()
     left = []
     right = []
     for i in tmp:
@@ -20,7 +20,7 @@ def part_one(input):
 
 
 def part_two(input):
-    tmp = input.rstrip().split("\n")
+    tmp = input.splitlines()
     left = []
     right = []
     for i in tmp:
