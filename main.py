@@ -36,8 +36,6 @@ def generate_challenge(year, day):
     paths = [
         f"challenge/y{year}",
         f"tests/y{year}",
-        f"tests/testdata/y{year}/{day}/01",
-        f"tests/testdata/y{year}/{day}/02",
     ]
 
     for p in paths:
