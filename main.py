@@ -4,6 +4,7 @@ import argparse
 import requests
 import unittest
 import timeit
+import types
 import os
 
 
@@ -33,25 +34,12 @@ def fetch_input(year, day):
 
 def generate_challenge(year, day):
     day = f"0{day}" if len(day) == 1 else day
-    paths = [
-        f"challenge/y{year}",
-        f"tests/y{year}",
-    ]
 
-    for p in paths:
-        if not os.path.exists(p):
-            os.makedirs(p)
+    if not os.path.exists(f"challenge/y{year}"):
+        os.makedirs(f"challenge/y{year}")
 
     with open(f"challenge/y{year}/__init__.py", "w"):
         pass
-    with open(f"tests/y{year}/__init__.py", "w"):
-        pass
-
-    with open("template/test") as f:
-        tmp = Template(f.read())
-
-    with open(f"tests/y{year}/d{day}_test.py", "w") as f:
-        f.write(tmp.substitute(year=year, day=day))
 
     with open("template/challenge") as f:
         tmp = f.read()
@@ -64,15 +52,43 @@ def generate_challenge(year, day):
 
 def test_challenge(year, day, part):
     day = f"0{day}" if len(day) == 1 else day
+    challenge = import_module(f"challenge.y{year}.d{day}")
+
+    class TestChallenge(unittest.TestCase):
+        def test_part_one(self):
+            for file in challenge.test_results["part_one"]:
+                with open(f"testdata/y{year}.{day}.01.{file}", "r") as f:
+                    with self.subTest(f"Testing file {file}"):
+                        self.assertEqual(
+                            challenge.part_one(f.read()),
+                            challenge.test_results["part_one"][file],
+                        )
+
+        def test_part_two(self):
+            for file in challenge.test_results["part_two"]:
+                with open(f"testdata/y{year}.{day}.02.{file}", "r") as f:
+                    with self.subTest(f"Testing file {file}"):
+                        self.assertEqual(
+                            challenge.part_two(f.read()),
+                            challenge.test_results["part_two"][file],
+                        )
+
+    test_module = types.ModuleType("test_module")
+    setattr(test_module, "TestChallenge", TestChallenge)
+
     if part in ["01", "1"]:
-        test_selector = f"tests.y{year}.d{day}_test.TestChallenge.test_part_one"
+        suite = unittest.TestLoader().loadTestsFromName(
+            "TestChallenge.test_part_one", test_module
+        )
     elif part in ["02", "2"]:
-        test_selector = f"tests.y{year}.d{day}_test.TestChallenge.test_part_two"
+        suite = unittest.TestLoader().loadTestsFromName(
+            "TestChallenge.test_part_two", test_module
+        )
     else:
-        test_selector = f"tests.y{year}.d{day}_test"
-    suite = unittest.TestLoader().loadTestsFromName(test_selector)
-    unittest.TextTestRunner(verbosity=2).run(suite)
-    return 0
+        suite = unittest.TestLoader().loadTestsFromTestCase(TestChallenge)
+
+    result = unittest.TextTestRunner(verbosity=2).run(suite)
+    return 0 if result.wasSuccessful() else 1
 
 
 def run_challenge(year, day, part):
