@@ -19,7 +19,6 @@ def check_safe_with_dampener(report):
     else:
         return (
             check_safe(report[:0] + report[1:])[0]
-            or check_safe(report[:1] + report[2:])[0]
             or check_safe(report[:idx1] + report[idx1 + 1 :])[0]
             or check_safe(report[:idx2] + report[idx2 + 1 :])[0]
         )
