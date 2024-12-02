@@ -35,11 +35,22 @@ def fetch_input(year, day):
 def generate_challenge(year, day):
     day = f"0{day}" if len(day) == 1 else day
 
-    if not os.path.exists(f"challenge/y{year}"):
-        os.makedirs(f"challenge/y{year}")
+    dirs = [f"challenge/y{year}", "testdata"]
 
-    with open(f"challenge/y{year}/__init__.py", "w"):
-        pass
+    for d in dirs:
+        if not os.path.exists(d):
+            os.makedirs(d)
+
+    files = [
+        f"challenge/y{year}/__init__.py",
+        f"testdata/y{year}.{day}.1.1",
+        f"testdata/y{year}.{day}.2.1",
+    ]
+
+    for f in files:
+        if not os.path.exists(f):
+            with open(f, "w"):
+                pass
 
     with open("template/challenge") as f:
         tmp = f.read()
@@ -57,7 +68,7 @@ def test_challenge(year, day, part):
     class TestChallenge(unittest.TestCase):
         def test_part_one(self):
             for file in challenge.test_results["part_one"]:
-                with open(f"testdata/y{year}.{day}.01.{file}", "r") as f:
+                with open(f"testdata/y{year}.{day}.1.{file}", "r") as f:
                     with self.subTest(f"Testing file {file}"):
                         self.assertEqual(
                             challenge.part_one(f.read()),
@@ -66,7 +77,7 @@ def test_challenge(year, day, part):
 
         def test_part_two(self):
             for file in challenge.test_results["part_two"]:
-                with open(f"testdata/y{year}.{day}.02.{file}", "r") as f:
+                with open(f"testdata/y{year}.{day}.2.{file}", "r") as f:
                     with self.subTest(f"Testing file {file}"):
                         self.assertEqual(
                             challenge.part_two(f.read()),
