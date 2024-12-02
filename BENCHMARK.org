@@ -5,4 +5,5 @@ Following table contains average time in seconds over 100 runs of each challenge
 | Year | Day | Part One Time | Part Two Time |
 |------+-----+---------------+---------------|
 | 2024 |  01 |       0.00041 |       0.00032 |
+| 2024 |  02 |       0.00143 |       0.00231 |
 |------+-----+---------------+---------------|
