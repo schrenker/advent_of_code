@@ -19,9 +19,6 @@ mas_search_pattern = [
 ]
 
 
-dbg = []
-
-
 def search_xmas(arr, pos):
     acc = 0
     for p in xmas_search_pattern:
