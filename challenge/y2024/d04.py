@@ -48,15 +48,6 @@ def search_xmas(arr, pos):
 
 
 def search_mas(arr, pos):
-    for p in mas_search_pattern:
-        if (
-            pos[0] + p[0][0] < 0
-            or pos[1] + p[0][1] < 0
-            or pos[0] + p[1][0] < 0
-            or pos[1] + p[1][1] < 0
-        ):
-            return 0
-
     acc = 0
 
     for p in mas_search_pattern:
@@ -88,8 +79,8 @@ def part_one(input):
 def part_two(input):
     acc = 0
     arr = input.splitlines()
-    for i in range(len(arr)):
-        for j in range(len(arr[i])):
+    for i in range(1, len(arr) - 1):
+        for j in range(1, len(arr[i - 1])):
             if arr[i][j] == "A":
                 acc += search_mas(arr, (i, j))
     return acc
