@@ -43,8 +43,8 @@ def generate_challenge(year, day):
 
     files = [
         f"challenge/y{year}/__init__.py",
-        f"testdata/y{year}.{day}.1.1",
-        f"testdata/y{year}.{day}.2.1",
+        f"testdata/y{year}_{day}_1_1",
+        f"testdata/y{year}_{day}_2_1",
     ]
 
     for f in files:
@@ -68,7 +68,7 @@ def test_challenge(year, day, part):
     class TestChallenge(unittest.TestCase):
         def test_part_one(self):
             for file in challenge.test_results["part_one"]:
-                with open(f"testdata/y{year}.{day}.1.{file}", "r") as f:
+                with open(f"testdata/y{year}_{day}_1_{file}", "r") as f:
                     with self.subTest(f"Testing file {file}"):
                         self.assertEqual(
                             challenge.part_one(f.read()),
@@ -77,7 +77,7 @@ def test_challenge(year, day, part):
 
         def test_part_two(self):
             for file in challenge.test_results["part_two"]:
-                with open(f"testdata/y{year}.{day}.2.{file}", "r") as f:
+                with open(f"testdata/y{year}_{day}_2_{file}", "r") as f:
                     with self.subTest(f"Testing file {file}"):
                         self.assertEqual(
                             challenge.part_two(f.read()),
