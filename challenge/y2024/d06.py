@@ -16,7 +16,7 @@ def find_guard(area):
 
 def find_path(area):
     curr = find_guard(area)
-    visited = {curr: True}
+    visited = {curr}
     rotation = 0
 
     while True:
@@ -31,13 +31,13 @@ def find_path(area):
             continue
 
         curr = next_stop
-        visited[curr] = True
+        visited.add(curr)
 
 
 def find_loop(start, area, obstacle):
     curr = start
     rotation = 0
-    visited = {(curr[0], curr[1], rotation): True}
+    visited = {(curr[0], curr[1], rotation)}
     while True:
         next_stop = (curr[0] + direction[rotation][0], curr[1] + direction[rotation][1])
 
@@ -54,7 +54,7 @@ def find_loop(start, area, obstacle):
         if (curr[0], curr[1], rotation) in visited:
             return True
         else:
-            visited[(curr[0], curr[1], rotation)] = True
+            visited.add((curr[0], curr[1], rotation))
 
 
 def part_one(input):
