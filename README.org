@@ -3,3 +3,10 @@
 - run.py [YEAR, DAY, PART] :: fetches and executes given part of a challenge
 - test.py [YEAR, DAY, PART] :: runs unit tests for given challenge. Can run single or both parts.
 - bench.py [YEAR, DAY, PART] :: measures average time over 100 runs in seconds for given challenge
+
+* Rules (for myself)
+1. No chatGPT or similar tools
+2. No looking up answers
+3. Stick to standard library, unless strictly necessary
+4. Do my best to write simple and clean code
+5. Publish honest benchmarks for each day and part
