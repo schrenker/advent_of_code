@@ -24,7 +24,7 @@ def main():
         "-r",
         nargs=1,
         type=int,
-        default=100,
+        default=[100],
         help="How many runs should be done for the average",
     )
     args = parser.parse_args()
