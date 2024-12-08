@@ -1,3 +1,6 @@
+from collections import defaultdict
+
+
 test_results = {"part_one": {"1": 14}, "part_two": {"1": 34, "2": 9}}
 
 
@@ -5,14 +8,11 @@ def parse_input(input):
     tmp_input = input.splitlines()
     height = len(tmp_input)
     length = len(tmp_input[0])
-    antennas = dict()
+    antennas = defaultdict(list)
     for i in range(height):
         for j in range(length):
             if tmp_input[i][j] != ".":
-                if tmp_input[i][j] in antennas:
-                    antennas[tmp_input[i][j]].append((i, j))
-                else:
-                    antennas[tmp_input[i][j]] = [(i, j)]
+                antennas[tmp_input[i][j]].append((i, j))
     return antennas, height, length
 
 
