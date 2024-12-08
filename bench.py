@@ -11,7 +11,7 @@ def bench_challenge(year, day, part, runs):
         number=runs,
     )
     average_result = result / runs
-    return f"Part {part} average time: {average_result:.5f} seconds"
+    return f"Part {part} average time: {average_result*1000:.3f} ms"
 
 
 def main():
