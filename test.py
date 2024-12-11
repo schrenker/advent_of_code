@@ -13,7 +13,7 @@ def test_challenge(year, day, part):
     class TestChallenge(unittest.TestCase):
         def test_part_one(self):
             for file in challenge.test_results["part_one"]:
-                with open(f"testdata/y{year}_{day}_1_{file}", "r") as f:
+                with open(f"testdata/y{year}_d{day}_p1_{file}", "r") as f:
                     with self.subTest(f"Testing file {file}"):
                         self.assertEqual(
                             challenge.part_one(f.read()),
@@ -22,7 +22,7 @@ def test_challenge(year, day, part):
 
         def test_part_two(self):
             for file in challenge.test_results["part_two"]:
-                with open(f"testdata/y{year}_{day}_2_{file}", "r") as f:
+                with open(f"testdata/y{year}_d{day}_p2_{file}", "r") as f:
                     with self.subTest(f"Testing file {file}"):
                         self.assertEqual(
                             challenge.part_two(f.read()),
