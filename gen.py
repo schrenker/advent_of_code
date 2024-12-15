@@ -7,7 +7,7 @@ import os
 def generate_challenge(year, day):
     day = f"0{day}" if len(day) == 1 else day
 
-    dirs = [f"challenge/y{year}", "testdata/y{year}"]
+    dirs = [f"challenge/y{year}", f"testdata/y{year}"]
 
     for d in dirs:
         if not os.path.exists(d):
