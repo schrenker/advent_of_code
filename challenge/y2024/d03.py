@@ -12,7 +12,7 @@ def merge_instructions(*iterators):
                 yield value
 
 
-def part_one(input):
+def part_one(input: str):
     acc = 0
     instructions = re.findall(r"mul\(\d{1,3},\d{1,3}\)", input)
     for i in instructions:
@@ -22,7 +22,7 @@ def part_one(input):
     return acc
 
 
-def part_two(input):
+def part_two(input: str):
     muls = re.finditer(r"mul\(\d{1,3},\d{1,3}\)", input)
     dos = re.finditer(r"do\(\)", input)
     donts = re.finditer(r"don't\(\)", input)

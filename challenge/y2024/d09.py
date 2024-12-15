@@ -70,7 +70,7 @@ def calculate_checksum(inp):
     return acc
 
 
-def part_one(input):
+def part_one(input: str):
     tmp = parse_input(input.rstrip())
     for i in range(len(tmp) - 1, -1, -1):
         if tmp[i] != ".":
@@ -83,7 +83,7 @@ def part_one(input):
                         break
 
 
-def part_two(input):
+def part_two(input: str):
     tmp = parse_input(input.rstrip())
     ranges = get_ranges(tmp)
 

@@ -57,12 +57,12 @@ def find_loop(start, area, obstacle):
             visited.add((curr[0], curr[1], rotation))
 
 
-def part_one(input):
+def part_one(input: str):
     area = input.splitlines()
     return len(find_path(area))
 
 
-def part_two(input):
+def part_two(input: str):
     area = input.splitlines()
     path = find_path(area)
     start = find_guard(area)

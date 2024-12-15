@@ -38,7 +38,7 @@ def fix_update(update, precedence):
     return update
 
 
-def part_one(input):
+def part_one(input: str):
     acc = 0
     rules, updates = parse_input(input)
     precedence = generate_precedence_dict(rules)
@@ -48,7 +48,7 @@ def part_one(input):
     return acc
 
 
-def part_two(input):
+def part_two(input: str):
     acc = 0
     rules, updates = parse_input(input)
     precedence = generate_precedence_dict(rules)

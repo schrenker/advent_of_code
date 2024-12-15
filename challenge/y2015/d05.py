@@ -52,7 +52,7 @@ def is_nice_better_model(string):
     return has_double_nonoverlapping(string) and has_letter_inbetween_pair(string)
 
 
-def part_one(input):
+def part_one(input: str):
     acc = 0
     for string in input.splitlines():
         if is_nice(string):
@@ -60,7 +60,7 @@ def part_one(input):
     return acc
 
 
-def part_two(input):
+def part_two(input: str):
     acc = 0
     for string in input.splitlines():
         if is_nice_better_model(string):

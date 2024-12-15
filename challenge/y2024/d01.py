@@ -1,7 +1,7 @@
 test_results = {"part_one": {"1": 11}, "part_two": {"1": 31}}
 
 
-def part_one(input):
+def part_one(input: str):
     tmp = input.splitlines()
     left = []
     right = []
@@ -19,7 +19,7 @@ def part_one(input):
     return acc
 
 
-def part_two(input):
+def part_two(input: str):
     tmp = input.splitlines()
     left = []
     right = []

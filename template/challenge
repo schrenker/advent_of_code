@@ -7,8 +7,8 @@ test_results = {
     }
 }
 
-def part_one(input):
+def part_one(input: str):
     return input
 
-def part_two(input):
+def part_two(input: str):
     return input

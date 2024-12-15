@@ -63,7 +63,7 @@ def search_mas(arr, pos):
         return 0
 
 
-def part_one(input):
+def part_one(input: str):
     acc = 0
     arr = input.splitlines()
     for i in range(len(arr)):
@@ -73,7 +73,7 @@ def part_one(input):
     return acc
 
 
-def part_two(input):
+def part_two(input: str):
     acc = 0
     arr = input.splitlines()
     for i in range(1, len(arr) - 1):

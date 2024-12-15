@@ -50,7 +50,7 @@ def get_field_stats_with_perimeter_table(pos, visited, field, perimeter_table):
     return area, perimeter_table
 
 
-def part_one(input):
+def part_one(input: str):
     visited = set()
     acc = 0
     field = [[y for y in x] for x in input.splitlines()]
@@ -63,7 +63,7 @@ def part_one(input):
     return acc
 
 
-def part_two(input):
+def part_two(input: str):
     visited = set()
     acc = 0
     field = [[y for y in x] for x in input.splitlines()]

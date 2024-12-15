@@ -21,7 +21,7 @@ def blink(stones):
     return tmp
 
 
-def part_one(input):
+def part_one(input: str):
     stones = defaultdict(int)
     for i in input.rstrip().split():
         stones[i] += 1
@@ -31,7 +31,7 @@ def part_one(input):
     return sum(stones.values())
 
 
-def part_two(input):
+def part_two(input: str):
     stones = defaultdict(int)
     for i in input.rstrip().split():
         stones[i] += 1

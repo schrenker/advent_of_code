@@ -14,14 +14,14 @@ test_results = {
 }
 
 
-def part_one(input):
+def part_one(input: str):
     floor = 0
     for i in input.rstrip():
         floor = floor + 1 if i == "(" else floor + -1
     return floor
 
 
-def part_two(input):
+def part_two(input: str):
     floor = 0
     for i in range(len(input)):
         floor = floor + 1 if input[i] == "(" else floor + -1
