@@ -17,14 +17,14 @@ test_results = {
 def part_one(input: str):
     floor = 0
     for i in input.rstrip():
-        floor = floor + 1 if i == "(" else floor + -1
+        floor += 1 if i == "(" else -1
     return floor
 
 
 def part_two(input: str):
     floor = 0
-    for i in range(len(input)):
-        floor = floor + 1 if input[i] == "(" else floor + -1
+    for i, v in enumerate(input):
+        floor += 1 if v == "(" else -1
 
         if floor == -1:
             return i + 1
