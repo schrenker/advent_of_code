@@ -1,4 +1,4 @@
-test_results = {"part_one": {"1": 2}, "part_two": {"1": 2}}
+test_results = {"part_one": {1: 2}, "part_two": {1: 2}}
 
 
 def has_vowels(string):

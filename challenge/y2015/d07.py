@@ -1,6 +1,6 @@
 import time
 
-test_results = {"part_one": {"1": 65079}, "part_two": {"1": 65079}}
+test_results = {"part_one": {1: 65079}, "part_two": {1: 65079}}
 
 
 def run_circuit(commands, circuit):

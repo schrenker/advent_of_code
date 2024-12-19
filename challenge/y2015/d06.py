@@ -2,7 +2,7 @@ from collections import defaultdict
 from typing import Counter
 
 
-test_results = {"part_one": {"1": 998996}, "part_two": {"1": 2000001}}
+test_results = {"part_one": {1: 998996}, "part_two": {1: 2000001}}
 
 
 def part_one(input: str):

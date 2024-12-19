@@ -2,7 +2,7 @@ from collections import defaultdict
 import itertools
 
 
-test_results = {"part_one": {"1": 605}, "part_two": {"1": 982}}
+test_results = {"part_one": {1: 605}, "part_two": {1: 982}}
 
 
 def prep_distances(input):

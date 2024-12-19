@@ -1,8 +1,8 @@
 from hashlib import md5
 
 test_results = {
-    "part_one": {"1": 609043, "2": 1048970},
-    "part_two": {"1": 6742839, "2": 5714438},
+    "part_one": {1: 609043, 2: 1048970},
+    "part_two": {1: 6742839, 2: 5714438},
 }
 
 

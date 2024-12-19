@@ -1,4 +1,4 @@
-test_results = {"part_one": {"1": 12}, "part_two": {"1": 19}}
+test_results = {"part_one": {1: 12}, "part_two": {1: 19}}
 
 
 def count_characters(string):

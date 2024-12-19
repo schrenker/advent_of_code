@@ -1,4 +1,4 @@
-test_results = {"part_one": {"1": 58, "2": 43}, "part_two": {"1": 34, "2": 14}}
+test_results = {"part_one": {1: 58, 2: 43}, "part_two": {1: 34, 2: 14}}
 
 
 def get_surface_area(dimensions):

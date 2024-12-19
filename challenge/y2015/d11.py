@@ -1,6 +1,6 @@
 test_results = {
-    "part_one": {"1": "abcdffaa", "2": "ghjaabcc"},
-    "part_two": {"1": "abcdffbb", "2": "ghjbbcdd"},
+    "part_one": {1: "abcdffaa", 2: "ghjaabcc"},
+    "part_two": {1: "abcdffbb", 2: "ghjbbcdd"},
 }
 
 

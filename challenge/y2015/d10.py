@@ -1,4 +1,4 @@
-test_results = {"part_one": {"1": 82350}, "part_two": {"1": 1166642}}
+test_results = {"part_one": {1: 82350}, "part_two": {1: 1166642}}
 
 
 def look_and_say(input):
