@@ -1,9 +1,9 @@
 test_results = {
     "part_one": {
-        "1": 0
+        1: 0
     },
     "part_two": {
-        "1": 0
+        1: 0
     }
 }
 
