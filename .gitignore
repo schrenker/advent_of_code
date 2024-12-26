@@ -4,4 +4,5 @@ challenge/*/__pycache__
 tests/*/__pycache__
 .venv/
 /input/
-/__pycache__/
+__pycache__/
+common/__pycache__
