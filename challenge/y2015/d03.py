@@ -6,7 +6,7 @@ test_results = {
 directions = {"^": (-1, 0), "v": (1, 0), ">": (0, 1), "<": (0, -1)}
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     curr = (0, 0)
     visited = set()
     visited.add(curr)
@@ -16,7 +16,7 @@ def part_one(input: str):
     return len(visited)
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     santa = (0, 0)
     robot = (0, 0)
     visited = set()

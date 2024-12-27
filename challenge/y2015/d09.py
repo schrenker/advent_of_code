@@ -15,7 +15,7 @@ def prep_distances(input):
     return distances
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     distances = prep_distances(input)
     result = float("inf")
     for p in itertools.permutations(distances.keys()):
@@ -28,7 +28,7 @@ def part_one(input: str):
     return result
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     distances = prep_distances(input)
     result = 0
     for p in itertools.permutations(distances.keys()):

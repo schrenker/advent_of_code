@@ -42,7 +42,7 @@ def next_step_rating(find, pos, area):
         return acc
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     area = [[int(x) for x in i] for i in input.splitlines()]
     starts = find_starts(area)
     acc = 0
@@ -52,7 +52,7 @@ def part_one(input: str):
     return acc
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     area = [[int(x) for x in i] for i in input.splitlines()]
     starts = find_starts(area)
     acc = 0

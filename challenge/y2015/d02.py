@@ -20,14 +20,14 @@ def get_ribbon_length(dimensions):
     )
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     acc = 0
     for i in input.splitlines():
         acc += get_surface_area([int(x) for x in i.split("x")])
     return acc
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     acc = 0
     for i in input.splitlines():
         acc += get_ribbon_length([int(x) for x in i.split("x")])

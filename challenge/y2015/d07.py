@@ -58,13 +58,13 @@ def run_circuit(commands, circuit):
     return circuit
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     circuit = dict()
     commands = input.splitlines()
     return run_circuit(commands, circuit)["a"]
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     circuit, second_circuit = dict(), dict()
     commands = input.splitlines()
     second_circuit["b"] = run_circuit(commands, circuit)["a"]

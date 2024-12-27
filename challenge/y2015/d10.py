@@ -15,14 +15,14 @@ def look_and_say(input):
     return result + str(am) + curr
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     result = input.rstrip()
     for i in range(40):
         result = look_and_say(result)
     return len(result)
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     result = input.rstrip()
     for i in range(50):
         result = look_and_say(result)

@@ -30,14 +30,14 @@ def is_valid_calibration(input, operators):
     return 0
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     acc = 0
     for i in input.splitlines():
         acc += is_valid_calibration(i, ["+", "*"])
     return acc
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     acc = 0
     for i in input.splitlines():
         acc += is_valid_calibration(i, ["+", "*", "|"])

@@ -20,7 +20,7 @@ def parse_input(input):
     return result
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     ingredients = parse_input(input)
     score = 0
     for count in addition_combinations(100, 1, len(ingredients)):
@@ -32,7 +32,7 @@ def part_one(input: str):
     return score
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     ingredients = parse_input(input)
     score = 0
     for count in addition_combinations(100, 1, len(ingredients)):

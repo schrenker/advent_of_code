@@ -35,14 +35,14 @@ def encode(string):
     return acc + 2 - i
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     acc = 0
     for string in input.splitlines():
         acc += count_characters(string)
     return acc
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     acc = 0
     for string in input.splitlines():
         acc += encode(string)

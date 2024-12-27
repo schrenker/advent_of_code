@@ -16,7 +16,7 @@ def parse_input(input):
     return antennas, height, length
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     antennas, height, length = parse_input(input)
     happened = set()
 
@@ -43,7 +43,7 @@ def part_one(input: str):
     return len(happened)
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     antennas, height, length = parse_input(input)
     happened = set()
 

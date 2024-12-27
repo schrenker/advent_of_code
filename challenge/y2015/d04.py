@@ -14,9 +14,9 @@ def find_leading_zeroes_md5(key, zeroes):
         i += 1
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     return find_leading_zeroes_md5(input.rstrip(), 5)
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     return find_leading_zeroes_md5(input.rstrip(), 6)

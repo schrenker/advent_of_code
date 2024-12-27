@@ -49,12 +49,12 @@ def parse_input(input):
     return result
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     reindeers = parse_input(input)
     return max([x.run_race(2503) for x in reindeers])
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     reindeers = parse_input(input)
     for _ in range(2503):
         top = defaultdict(list)

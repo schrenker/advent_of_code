@@ -16,7 +16,7 @@ def test_challenge(year, day, part):
                 with open(f"testdata/y{year}/d{day}_p1_{file}", "r") as f:
                     with self.subTest(f"Testing file {file}"):
                         self.assertEqual(
-                            challenge.part_one(f.read()),
+                            challenge.part_one(f.read(), test_run=True),
                             challenge.test_results["part_one"][file],
                         )
 
@@ -25,7 +25,7 @@ def test_challenge(year, day, part):
                 with open(f"testdata/y{year}/d{day}_p2_{file}", "r") as f:
                     with self.subTest(f"Testing file {file}"):
                         self.assertEqual(
-                            challenge.part_two(f.read()),
+                            challenge.part_two(f.read(), test_run=True),
                             challenge.test_results["part_two"][file],
                         )
 

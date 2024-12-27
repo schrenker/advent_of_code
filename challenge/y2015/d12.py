@@ -42,13 +42,13 @@ def handle_list(l):
     return acc
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     acc = 0
     for i in re.findall(r"-?\d+", input):
         acc += int(i)
     return acc
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     j = json.loads(input)
     return handle_dict(j) if type(j) is dict else handle_list(j)

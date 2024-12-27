@@ -24,7 +24,7 @@ def check_safe_with_dampener(report):
         )
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     acc = 0
     for i in input.splitlines():
         report = [int(x) for x in i.split()]
@@ -33,7 +33,7 @@ def part_one(input: str):
     return acc
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     acc = 0
     for i in input.splitlines():
         report = [int(x) for x in i.split()]

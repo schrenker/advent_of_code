@@ -14,14 +14,14 @@ test_results = {
 }
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     floor = 0
     for i in input.rstrip():
         floor += 1 if i == "(" else -1
     return floor
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     floor = 0
     for i, v in enumerate(input):
         floor += 1 if v == "(" else -1

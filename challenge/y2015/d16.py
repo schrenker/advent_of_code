@@ -14,7 +14,7 @@ def parse_aunt(s):
     return aunt, attributes
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     target = {
         "children": 3,
         "cats": 7,
@@ -40,7 +40,7 @@ def part_one(input: str):
             return aunt
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     target = {
         "children": 3,
         "cats": 7,

@@ -41,7 +41,7 @@ def increment_password(password):
     return password
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     password = list(input.rstrip())
     while True:
         if (
@@ -53,5 +53,5 @@ def part_one(input: str):
         password = increment_password(password)
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     return part_one("".join(increment_password(list(part_one(input)))))

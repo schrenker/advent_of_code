@@ -20,7 +20,7 @@ def calculate_happiness(arrang, seats):
     return acc
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     seats = parse_input(input)
     acc = 0
     for arrang in itertools.permutations(seats):
@@ -30,7 +30,7 @@ def part_one(input: str):
     return acc
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     seats = parse_input(input)
     for i in list(seats.keys()):
         seats["me"][i] = 0

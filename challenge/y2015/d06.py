@@ -5,7 +5,7 @@ from typing import Counter
 test_results = {"part_one": {1: 998996}, "part_two": {1: 2000001}}
 
 
-def part_one(input: str):
+def part_one(input: str, test_run=False):
     lights = defaultdict(bool)
     for i in input.splitlines():
         spl = i.split(" ")
@@ -26,7 +26,7 @@ def part_one(input: str):
     return Counter(lights.values())[True]
 
 
-def part_two(input: str):
+def part_two(input: str, test_run=False):
     lights = defaultdict(int)
     for i in input.splitlines():
         spl = i.split(" ")
