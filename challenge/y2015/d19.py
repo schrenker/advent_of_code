@@ -34,6 +34,36 @@ def simplifications(replacements):
     return result
 
 
+def find_simplification(molecule, simplifications):
+    for s in simplifications:
+        for i in range(len(molecule) - len(s) + 1):
+            if molecule[i : i + len(s)] == s:
+                yield (molecule[:i] + simplifications[s] + molecule[i + len(s) :])
+
+
+def a_star(start, end, simplifications):
+    open_nodes = {start}
+    prev_node = {start: None}
+    costs = {start: 0}
+
+    while open_nodes:
+        current_node = min(open_nodes, key=lambda node: costs[node] + len(node))
+
+        if current_node == end:
+            return costs[end]
+
+        for n in find_simplification(current_node, simplifications):
+            tmp = costs[current_node] + 1
+            if n not in costs or tmp < costs[n]:
+                open_nodes.add(n)
+                costs[n] = tmp
+                prev_node[n] = current_node
+
+        open_nodes.remove(current_node)
+
+    raise Exception(f"Unable to find path from {start} to {end}")
+
+
 def part_one(input: str, test_run=False):
     replacements, molecule = parse_input(input)
     transformations = set()
@@ -45,18 +75,5 @@ def part_one(input: str, test_run=False):
 
 
 def part_two(input: str, test_run=False):
-    # replacements, molecule = parse_input(input)
-    # simplified = simplifications(replacements)
-    # steps = 0
-    # print(simplified)
-    # for i in sorted(simplified.keys(), reverse=True, key=len):
-    #     if molecule == "e":
-    #         return steps
-    #     else:
-    #         for r in re.finditer(i, molecule):
-    #             tmp = molecule[: r.start(0)] + simplified[i] + molecule[r.end(0) :]
-    #             if "e" in tmp and len(tmp) > 1:
-    #                 continue
-    #             molecule = tmp
-    #             steps += 1
-    return input
+    replacements, molecule = parse_input(input)
+    return a_star(molecule, "e", simplifications(replacements))
