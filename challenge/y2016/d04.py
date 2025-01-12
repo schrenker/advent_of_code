@@ -1,4 +1,4 @@
-from typing import Counter
+from collections import Counter
 
 
 test_results = {"part_one": {1: 1514}, "part_two": {1: 343}}

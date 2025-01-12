@@ -1,7 +1,6 @@
-from collections import defaultdict
-from typing import Counter
+from collections import defaultdict, Counter
 
-test_results = {"part_one": {1: 4}, "part_two": {1: 7}}
+test_results = {"part_one": {1: 4}, "part_two": {1: 17}}
 
 directions = [(-1, -1), (-1, 0), (-1, 1), (0, -1), (0, 1), (1, -1), (1, 0), (1, 1)]
 
