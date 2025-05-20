@@ -7,32 +7,52 @@ test_results = {
         5: 6,
         6: 18,
     },
-    "part_two": {1: 9, 2: 20, 3: 241920, 4: 445},
+    "part_two": {
+        1: 9,
+        2: 20,
+        3: 241920,
+        4: 445,
+    },
 }
 
 
 def part_one(input: str, test_run=False):
-    i = 0
     data = input.rstrip("\n")
-    decompress = ""
-    while i < len(data):
-        if data[i] != "(":
-            decompress += data[i]
+    pos = 0
+    final_length = 0
+    while pos < len(data):
+        if data[pos] != "(":
+            final_length += 1
         else:
-            chars = 0
-            rep = 0
-            j = i
-            while data[j] != ")":
-                j += 1
-            chars, rep = [int(x) for x in data[i + 1 : j].split("x")]
-            i = j + 1
+            i = pos
+            while data[i] != ")":
+                i += 1
+            chars, rep = [int(x) for x in data[pos + 1 : i].split("x")]
+            pos = i + 1
             for _ in range(rep):
-                decompress += data[i : i + chars]
-            i += chars
+                final_length += len(data[pos : pos + chars])
+            pos += chars
             continue
-        i += 1
-    return len(decompress)
+        pos += 1
+    return final_length
+
+
+def decompress(data):
+    pos = 0
+    final_length = 0
+    while pos < len(data):
+        if data[pos] != "(":
+            final_length += 1
+            pos += 1
+        else:
+            i = pos
+            while data[i] != ")":
+                i += 1
+            chars, rep = [int(x) for x in data[pos + 1 : i].split("x")]
+            final_length += decompress(data[i + 1 : chars + i + 1]) * rep
+            pos = i + chars + 1
+    return final_length
 
 
 def part_two(input: str, test_run=False):
-    return input
+    return decompress(input.rstrip("\n"))
